@@ -1,0 +1,18 @@
+<stack>
+  <name>convex_decomposition</name>
+  <version>0.1.0</version>
+  <description brief="MoveIt! Messages">Convex Decomposition Tool for Robot Model</description>
+  <author email="jratcliff@infiniplex.net">John W. Ratcliff</author>
+
+  <maintainer email="isucan@willowgarage.com">Ioan Sucan</maintainer>
+
+  <license>MIT</license>  
+  <copyright>John W. Ratcliff</copyright>
+  <url>http://codesuppository.blogspot.com</url>
+
+  <build_depends>catkin</build_depends>
+  <build_depends>unzip</build_depends>
+
+  <depends>unzip</depends>
+
+</stack>
