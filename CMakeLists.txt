@@ -10,6 +10,8 @@ include(ExternalProject)
 
 set(CMAKE_BUILD_TYPE Release)
 
+message(STATUS "DESTDIR=$ENV{DESTDIR}")
+
 # download and build ConvexDecomposition
 ExternalProject_Add(cd
   DOWNLOAD_DIR "${CMAKE_SOURCE_DIR}/download"
@@ -17,7 +19,8 @@ ExternalProject_Add(cd
   URL_MD5 "bc4a79ca0d6b282d472d118c95f83867"
   CMAKE_ARGS
   "-DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}"
-  "-DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX}"
+  "-DCMAKE_INSTALL_PREFIX=$ENV{DESTDIR}/${CMAKE_INSTALL_PREFIX}" 
+  "-DCMAKE_INSTALL_NAME_DIR=${CMAKE_INSTALL_NAME_DIR}"
   PATCH_COMMAND patch -p0 < ${CMAKE_SOURCE_DIR}/convex_decomposition.patch)
 
 # use a CMakeLists.txt file to configure build of PQP
