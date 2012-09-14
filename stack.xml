@@ -1,6 +1,6 @@
 <stack>
   <name>convex_decomposition</name>
-  <version>0.1.0</version>
+  <version>0.1.1</version>
   <description brief="MoveIt! Messages">Convex Decomposition Tool for Robot Model</description>
   <author email="jratcliff@infiniplex.net">John W. Ratcliff</author>
 

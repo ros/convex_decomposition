@@ -4,6 +4,7 @@ project(convex_decomposition)
 find_package(catkin REQUIRED)
 
 catkin_stack()
+catkin_project(${PROJECT_NAME})
 
 include(ExternalProject)
 
