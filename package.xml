@@ -1,4 +1,4 @@
-<stack>
+<package>
   <name>convex_decomposition</name>
   <version>0.1.5</version>
   <description brief="MoveIt! Messages">Convex Decomposition Tool for Robot Model</description>
@@ -10,9 +10,9 @@
   <copyright>John W. Ratcliff</copyright>
   <url>http://codesuppository.blogspot.com</url>
 
-  <build_depends>catkin</build_depends>
-  <build_depends>unzip</build_depends>
+  <build_depend>catkin</build_depend>
+  <build_depend>unzip</build_depend>
 
-  <depends>unzip</depends>
+  <run_depend>unzip</run_depend>
 
-</stack>
+</package>
