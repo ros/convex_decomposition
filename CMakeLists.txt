@@ -16,7 +16,7 @@ ExternalProject_Add(cd
   URL_MD5 "bc4a79ca0d6b282d472d118c95f83867"
   CMAKE_ARGS
   "-DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}"
-  "-DCMAKE_INSTALL_PREFIX=${CATKIN_BUILD_PREFIX}/${CATKIN_PACKAGE_BIN_DESTINATION}"
+  "-DCMAKE_INSTALL_PREFIX=${CATKIN_BUILD_PREFIX}"
   PATCH_COMMAND patch -p0 < ${CMAKE_CURRENT_SOURCE_DIR}/convex_decomposition.patch)
 
 # use a CMakeLists.txt file to configure build of PQP
@@ -35,6 +35,6 @@ ExternalProject_Add_Step(cd addCMakeList2
   DEPENDERS configure)
 
 
-install(PROGRAMS ${CATKIN_BUILD_REFIX}/${CATKIN_PACKAGE_BIN_DESTINATION}/${PROJECT_NAME}
+install(PROGRAMS ${CATKIN_BUILD_PREFIX}/bin/${PROJECT_NAME}
         DESTINATION bin
 )
