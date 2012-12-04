@@ -1,14 +1,15 @@
 <package>
   <name>convex_decomposition</name>
   <version>0.1.7</version>
-  <description brief="MoveIt! Messages">Convex Decomposition Tool for Robot Model</description>
+  <description>Convex Decomposition Tool for Robot Model</description>
   <author email="jratcliff@infiniplex.net">John W. Ratcliff</author>
 
   <maintainer email="isucan@willowgarage.com">Ioan Sucan</maintainer>
 
-  <license>MIT</license>  
-  <copyright>John W. Ratcliff</copyright>
-  <url>http://codesuppository.blogspot.com</url>
+  <license>MIT</license>
+  <url type="website">http://codesuppository.blogspot.com</url>
+  <url type="bugtracker">http://kforge.ros.org/robotmodel/Trac</url>
+  <url type="repository">http://kforge.ros.org/robotmodel/convex_decomposition</url>
 
   <build_depend>catkin</build_depend>
   <build_depend>unzip</build_depend>
