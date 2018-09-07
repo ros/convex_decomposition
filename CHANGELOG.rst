@@ -2,8 +2,8 @@
 Changelog for package convex_decomposition
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.1.12 (2018-09-07)
+-------------------
 * Merge pull request `#8 <https://github.com/ros/convex_decomposition/issues/8>`_ from k-okada/add_travis
   update travis.yml
 * Change maintainer to ROS Orphaned Package
