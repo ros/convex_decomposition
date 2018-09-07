@@ -4,7 +4,7 @@
   <description>Convex Decomposition Tool for Robot Model</description>
   <author email="jratcliff@infiniplex.net">John W. Ratcliff</author>
 
-  <maintainer email="bvondervoort@clearpathrobotics.com">Bryce Vondervoort</maintainer>
+  <maintainer email="ros-orphaned-packages@googlegroups.com">ROS Orphaned Package Maintainers</maintainer>
 
   <license>MIT</license>
   <url type="website">http://codesuppository.blogspot.com</url>
