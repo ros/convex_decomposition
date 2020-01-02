@@ -221,7 +221,7 @@ public:
 
 	void saveCOLLADA(void)
 	{
-  	char scratch[512];
+  	char scratch[516];
 		sprintf(scratch,"%s.dae", mBaseName );
 		FILE *fph = fopen(scratch,"wb");
 
@@ -413,7 +413,7 @@ public:
 
   void saveNxuStream(void)
   {
-  	char scratch[512];
+  	char scratch[516];
 		sprintf(scratch,"%s.xml", mBaseName );
 		FILE *fph = fopen(scratch,"wb");
 
