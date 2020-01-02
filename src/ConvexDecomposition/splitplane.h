@@ -71,6 +71,6 @@ bool computeSplitPlane(unsigned int vcount,
                        double *plane);
 
 
-};
+}
 
 #endif

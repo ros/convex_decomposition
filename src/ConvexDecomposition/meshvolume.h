@@ -65,6 +65,6 @@ double computeMeshVolume2(const double *vertices,unsigned int tcount,const unsig
 
 float computeMeshVolume(const float *vertices,unsigned int tcount,const unsigned int *indices);
 
-};
+}
 
 #endif

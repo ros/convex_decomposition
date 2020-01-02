@@ -245,6 +245,6 @@ private:
 													double *scale);
 };
 
-};
+}
 
 #endif

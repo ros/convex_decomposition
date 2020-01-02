@@ -95,6 +95,6 @@ void computeBestFitABB(unsigned int vcount,const double *points,unsigned int pst
 void computeBestFitOBB(unsigned int vcount,const float *points,unsigned int pstride,float *sides,float *pos,float *quat); // the float version of the routine.
 void computeBestFitABB(unsigned int vcount,const float *points,unsigned int pstride,float *sides,float *pos);
 
-};
+}
 
 #endif

@@ -135,7 +135,6 @@ static void intersect(const double *p1,const double *p2,double *split,const doub
 {
 
   double dp1 = DistToPt(p1,plane);
-  double dp2 = DistToPt(p2,plane);
 
   double dir[3];
 
@@ -356,7 +355,7 @@ public:
 
   void addWeighted(WpointVector &list,ConvexDecompInterface *callback)
   {
-
+    (void)callback;
     Wpoint p1(mP1,mC1);
     Wpoint p2(mP2,mC2);
     Wpoint p3(mP3,mC3);
@@ -437,7 +436,7 @@ typedef std::vector< CTri > CTriVector;
 
 bool featureMatch(CTri &m,const CTriVector &tris,ConvexDecompInterface *callback,const CTriVector &input_mesh)
 {
-
+  (void)callback;
   bool ret = false;
 
   double neardot = 0.707f;
@@ -451,8 +450,6 @@ bool featureMatch(CTri &m,const CTriVector &tris,ConvexDecompInterface *callback
 	CTriVector::const_iterator i;
 
 	CTri nearest;
-
-  double near[3] = { 1e9, 1e9, 1e9 };
 
 	for (i=tris.begin(); i!=tris.end(); ++i)
 	{
@@ -546,6 +543,8 @@ bool featureMatch(CTri &m,const CTriVector &tris,ConvexDecompInterface *callback
 
 bool isFeatureTri(CTri &t,CTriVector &flist,double fc,ConvexDecompInterface *callback,unsigned int color)
 {
+  (void)callback;
+  (void)color;
   bool ret = false;
 
   if ( t.mProcessed == 0 ) // if not already processed
@@ -624,7 +623,7 @@ double computeConcavity(unsigned int vcount,
 		double bmin[3];
 		double bmax[3];
 
-    double diagonal = getBoundingRegion( result.mNumOutputVertices, result.mOutputVertices, sizeof(double)*3, bmin, bmax );
+    getBoundingRegion( result.mNumOutputVertices, result.mOutputVertices, sizeof(double)*3, bmin, bmax );
 
 		double dx = bmax[0] - bmin[0];
 		double dy = bmax[1] - bmin[1];
@@ -635,8 +634,6 @@ double computeConcavity(unsigned int vcount,
 		center.x = bmin[0] + dx*0.5f;
 		center.y = bmin[1] + dy*0.5f;
 		center.z = bmin[2] + dz*0.5f;
-
-		double boundVolume = dx*dy*dz;
 
 		volume = computeMeshVolume2( result.mOutputVertices, result.mNumFaces, result.mIndices );
 
@@ -818,4 +815,4 @@ double computeConcavity(unsigned int vcount,
 }
 
 
-};
+}

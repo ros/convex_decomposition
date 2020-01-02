@@ -77,6 +77,6 @@ public:
   double        *mVertices;
 };
 
-};
+}
 
 #endif

@@ -480,4 +480,4 @@ bool  overlapAABB(const double *bmin1,const double *bmax1,const double *bmin2,co
   return true; // the extents overlap
 }
 
-}; // end of namespace
+} // end of namespace

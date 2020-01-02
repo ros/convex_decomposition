@@ -3,7 +3,10 @@
 #include <string.h>
 #include <assert.h>
 
-#pragma warning(disable:4786)
+#ifdef _WIN32
+# pragma warning(push)
+# pragma warning(disable:4786)
+#endif
 
 #include <vector>
 #include <map>
@@ -301,7 +304,7 @@ bool VertexLess<VertexPosition>::operator()(int v1,int v2) const
 
   return ret;
 
-};
+}
 
 
 
@@ -337,4 +340,8 @@ unsigned int  Vl_getVcount(VertexLookup vlook)
   return vp->GetVertexCount();
 }
 
-}; // end of namespace
+} // end of namespace
+
+#ifdef _WIN32
+# pragma warning(pop)
+#endif
