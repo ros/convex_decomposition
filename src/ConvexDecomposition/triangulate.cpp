@@ -130,7 +130,7 @@ bool InsideTriangle(double Ax, double Ay,double Bx, double By,double Cx, double 
   cpx= Px - Cx;  cpy= Py - Cy;  aCROSSbp = ax*bpy - ay*bpx;
   cCROSSap = cx*apy - cy*apx;
   bCROSScp = bx*cpy - by*cpx;  return ((aCROSSbp >= 0.0f) && (bCROSScp >= 0.0f) && (cCROSSap >= 0.0f));
-};
+}
 
 bool Snip(const Vec2dVector &contour,int u,int v,int w,int n,int *V)
 {
@@ -142,7 +142,8 @@ bool Snip(const Vec2dVector &contour,int u,int v,int w,int n,int *V)
   By = contour[V[v]].GetY();
   Cx = contour[V[w]].GetX();
   Cy = contour[V[w]].GetY();
-  if ( EPSILON > (((Bx-Ax)*(Cy-Ay)) - ((By-Ay)*(Cx-Ax))) ) return false;  for (p=0;p<n;p++)
+  if ( EPSILON > (((Bx-Ax)*(Cy-Ay)) - ((By-Ay)*(Cx-Ax))) ) return false;
+  for (p=0;p<n;p++)
   {
     if( (p == u) || (p == v) || (p == w) ) continue;
     Px = contour[V[p]].GetX();
@@ -155,10 +156,14 @@ bool Process(const Vec2dVector &contour,Vec2dVector &result)
 {
   /* allocate and initialize list of Vertices in polygon */
   int n = contour.size();
-  if ( n < 3 ) return false;  int *V = new int[n];  /* we want a counter-clockwise polygon in V */  if ( 0.0f < Area(contour) )
+  if ( n < 3 ) return false;
+  int *V = new int[n];  /* we want a counter-clockwise polygon in V */
+  if ( 0.0f < Area(contour) )
     for (int v=0; v<n; v++) V[v] = v;
   else
-    for(int v=0; v<n; v++) V[v] = (n-1)-v;  int nv = n;  /*  remove nv-2 Vertices, creating 1 triangle every time */
+    for(int v=0; v<n; v++) V[v] = (n-1)-v;
+
+  int nv = n;  /*  remove nv-2 Vertices, creating 1 triangle every time */
 
   int count = 2*nv;   /* error detection */
 
@@ -190,7 +195,8 @@ bool Process(const Vec2dVector &contour,Vec2dVector &result)
       result.push_back( contour[c] );
 
       m++;      /* remove v from remaining polygon */
-      for(s=v,t=v+1;t<nv;s++,t++) V[s] = V[t]; nv--;      /* resest error detection counter */
+      for(s=v,t=v+1;t<nv;s++,t++) V[s] = V[t];
+      nv--;      /* resest error detection counter */
       count = 2*nv;
     }
 
@@ -238,7 +244,6 @@ unsigned int triangulate3d(unsigned int pcount,     // number of points in the p
     unsigned int i0 = 0;
     unsigned int i1 = 1;
     unsigned int i2 = 2;
-    unsigned int axis = 0;
 
 
     // find the dominant axis.
@@ -248,7 +253,6 @@ unsigned int triangulate3d(unsigned int pcount,     // number of points in the p
 
     if ( dx > dy && dx > dz )
     {
-      axis = 0;
       i0   = 1;
       i1   = 2;
       i2   = 0;
@@ -258,14 +262,12 @@ unsigned int triangulate3d(unsigned int pcount,     // number of points in the p
       i0   = 0;
       i1   = 2;
       i2   = 1;
-      axis = 1;
     }
     else if ( dz > dx && dz > dy )
     {
       i0 = 0;
       i1 = 1;
       i2 = 2;
-      axis = 2;
     }
 
     double *ptemp = new double[pcount*2];
@@ -407,4 +409,4 @@ unsigned int triangulate2d(unsigned int pcount,     // number of points in the p
   return ret;
 }
 
-}; // end of namespace
+} // end of namespace

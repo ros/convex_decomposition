@@ -313,7 +313,6 @@ public:
 
       for (unsigned int i=0; i<mHulls.size(); i++)
       {
-      	ConvexResult *ch = mHulls[i];
         fprintf(fph,"         <shape>\r\n");
         fprintf(fph,"            <translate>0 0 0</translate>\r\n");
         fprintf(fph,"            <rotate>1 0 0  0</rotate>\r\n");
@@ -567,7 +566,7 @@ int main(int argc,const char **argv)
 			if ( strncmp(o,"-d",2) == 0 )
 			{
 				depth = (unsigned int) atoi( &o[2] );
-				if ( depth < 0 || depth > 10 )
+				if ( depth > 10 )
 				{
 					depth = 5;
 					printf("Invalid depth value in switch, defaulting to 5.\r\n");

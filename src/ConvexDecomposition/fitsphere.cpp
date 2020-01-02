@@ -87,7 +87,7 @@ static inline void Set(double *n,double x,double y,double z)
 	n[0] = x;
 	n[1] = y;
 	n[2] = z;
-};
+}
 
 static inline void Copy(double *dest,const double *source)
 {
@@ -230,7 +230,7 @@ static inline void Set(float *n,float x,float y,float z)
 	n[0] = x;
 	n[1] = y;
 	n[2] = z;
-};
+}
 
 static inline void Copy(float *dest,const float *source)
 {
@@ -375,4 +375,4 @@ double computeSphereVolume(double r)
 	return (4.0f*3.141592654f*r*r*r)/3.0f;  // 4/3 PI R cubed
 }
 
-};
+}

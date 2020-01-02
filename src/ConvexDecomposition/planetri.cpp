@@ -104,7 +104,6 @@ static void intersect(const double *p1,const double *p2,double *split,const doub
 {
 
   double dp1 = DistToPt(p1,plane);
-  double dp2 = DistToPt(p2,plane);
 
   double dir[3];
 
@@ -311,4 +310,4 @@ PlaneTriResult planeTriIntersection(const double *_plane,    // the plane equati
   return ret;
 }
 
-};
+}

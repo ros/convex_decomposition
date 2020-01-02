@@ -137,7 +137,7 @@ const double * Vl_getVertices(VertexLookup vlook);
 
 unsigned int  Vl_getVcount(VertexLookup vlook);
 
-};
+}
 
 
 #endif

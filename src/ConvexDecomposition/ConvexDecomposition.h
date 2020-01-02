@@ -192,10 +192,10 @@ class ConvexDecompInterface
 {
 public:
 
-	virtual void ConvexDebugTri(const double *p1,const double *p2,const double *p3,unsigned int color) { };
-	virtual void ConvexDebugPoint(const double *p,double dist,unsigned int color) { };
-  virtual void ConvexDebugBound(const double *bmin,const double *bmax,unsigned int color) { };
-  virtual void ConvexDebugOBB(const double *sides, const double *matrix,unsigned int color) { };
+	virtual void ConvexDebugTri(const double *p1,const double *p2,const double *p3,unsigned int color) { (void)p1; (void)p2; (void)p3; (void)color; }
+	virtual void ConvexDebugPoint(const double *p,double dist,unsigned int color) { (void)p; (void)dist; (void)color; }
+  virtual void ConvexDebugBound(const double *bmin,const double *bmax,unsigned int color) { (void)bmin; (void)bmax; (void)color; }
+  virtual void ConvexDebugOBB(const double *sides, const double *matrix,unsigned int color) { (void)sides; (void)matrix; (void)color; }
 
   virtual void ConvexDecompResult(ConvexResult &result) = 0;
 
@@ -244,6 +244,6 @@ public:
 // perform approximate convex decomposition on a mesh.
 unsigned int performConvexDecomposition(const DecompDesc &desc); // returns the number of hulls produced.
 
-};
+}
 
 #endif

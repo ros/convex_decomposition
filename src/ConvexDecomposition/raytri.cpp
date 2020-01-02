@@ -157,4 +157,4 @@ bool lineIntersectsTriangle(const double *rayStart,const double *rayEnd,const do
   return ret;
 }
 
-}; // end of namespace
+} // end of namespace

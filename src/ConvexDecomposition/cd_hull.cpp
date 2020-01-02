@@ -1168,6 +1168,8 @@ double3 operator*( const Quaternion& q, const double3& v )
 
 double3 operator*( const double3& v, const Quaternion& q )
 {
+	(void)v;
+	(void)q;
 	assert(0);  // must multiply with the quat on the left
 	return double3(0.0f,0.0f,0.0f);
 }
@@ -1752,7 +1754,6 @@ int AssertIntact(ConvexH &convex) {
 			inext = estart;
 		}
 		assert(convex.edges[inext].p == convex.edges[i].p);
-		HalfEdge &edge = convex.edges[i];
 		int nb = convex.edges[i].ea;
 		assert(nb!=255);
 		if(nb==255 || nb==-1) return 0;
@@ -1892,10 +1893,6 @@ ConvexH *ConvexHCrop(ConvexH &convex,const Plane &slice)
 	int i;
 	int vertcountunder=0;
 	int vertcountover =0;
-	int edgecountunder=0;
-	int edgecountover =0;
-	int planecountunder=0;
-	int planecountover =0;
 	static Array<int> vertscoplanar;  // existing vertex members of convex that are coplanar
 	vertscoplanar.count=0;
 	static Array<int> edgesplit;  // existing edges that members of convex that cross the splitplane
@@ -1905,7 +1902,6 @@ ConvexH *ConvexHCrop(ConvexH &convex,const Plane &slice)
 
 	EdgeFlag  edgeflag[512];
 	VertFlag  vertflag[256];
-	PlaneFlag planeflag[128];
 	HalfEdge  tmpunderedges[512];
 	Plane	  tmpunderplanes[128];
 	Coplanar coplanaredges[512];
@@ -1940,8 +1936,6 @@ ConvexH *ConvexHCrop(ConvexH &convex,const Plane &slice)
 		int enextface;
 		int planeside = 0;
 		int e1 = e0+1;
-		int eus=-1;
-		int ecop=-1;
 		int vout=-1;
 		int vin =-1;
 		int coplanaredge = -1;
@@ -1969,7 +1963,7 @@ ConvexH *ConvexHCrop(ConvexH &convex,const Plane &slice)
 			}
 			else if((vertflag[edge0.v].planetest | vertflag[edge1.v].planetest)  == UNDER) {
 				// at least one endpoint under, the other coplanar or under
-				
+
 				edgeflag[e0].undermap = under_edge_count;
 				tmpunderedges[under_edge_count].v = vertflag[edge0.v].undermap;
 				tmpunderedges[under_edge_count].p = underplanescount;
@@ -2127,12 +2121,8 @@ ConvexH *ConvexHCrop(ConvexH &convex,const Plane &slice)
 		} while(e0!=estart) ;
 		e0 = enextface;
 		if(planeside&UNDER) {
-			planeflag[currentplane].undermap = underplanescount;
 			tmpunderplanes[underplanescount] = convex.facets[currentplane];
 			underplanescount++;
-		}
-		else {
-			planeflag[currentplane].undermap = 0;
 		}
 		if(vout>=0 && (planeside&UNDER)) {
 			assert(vin>=0);
@@ -2620,13 +2610,11 @@ int calchullgen(double3 *verts,int verts_count, int vlimit)
 	vlimit-=4;
 	while(vlimit >0 && (te=extrudable(epsilon)))
 	{
-		int3 ti=*te;
 		int v=te->vmax;
 		assert(!isextreme[v]);  // wtf we've already done this vertex
 		isextreme[v]=1;
 		//if(v==p0 || v==p1 || v==p2 || v==p3) continue; // done these already
 		j=tris.count;
-		int newstart=j;
 		while(j--) {
 			if(!tris[j]) continue;
 			int3 t=*tris[j];
@@ -3197,8 +3185,6 @@ bool  HullLibrary::CleanupVertices(unsigned int svcount,
 
 	#define EPSILON 0.000001f // close enough to consider two doubleing point numbers to be 'the same'.
 
-	bool ret = false;
-
 	vcount = 0;
 
 	double recip[3];
@@ -3452,7 +3438,7 @@ void HullLibrary::BringOutYourDead(const double *verts,unsigned int vcount, doub
 	{
 		unsigned int v = indices[i]; // original array index
 
-		assert( v >= 0 && v < vcount );
+		assert( v < vcount );
 
 		if ( used[v] ) // if already remapped
 		{
@@ -3469,7 +3455,7 @@ void HullLibrary::BringOutYourDead(const double *verts,unsigned int vcount, doub
 
 			ocount++; // increment output vert count
 
-			assert( ocount >=0 && ocount <= vcount );
+			assert( ocount <= vcount );
 
 			used[v] = ocount; // assign new index remapping
 		}
@@ -3647,4 +3633,4 @@ double HullLibrary::ComputeNormal(double *n,const double *A,const double *B,cons
 
 
 
-};
+}

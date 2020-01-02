@@ -85,6 +85,6 @@ bool getBestFitPlane(unsigned int vcount,     // number of input data points
 double getBoundingRegion(unsigned int vcount,const double *points,unsigned int pstride,double *bmin,double *bmax); // returns the diagonal distance
 bool  overlapAABB(const double *bmin1,const double *bmax1,const double *bmin2,const double *bmax2); // return true if the two AABB's overlap.
 
-};
+}
 
 #endif

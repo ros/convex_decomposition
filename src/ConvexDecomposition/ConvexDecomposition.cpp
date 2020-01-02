@@ -527,6 +527,9 @@ public:
               VertexLookup split,
               const double *plane)
   {
+    (void)edges;
+    (void)split;
+    (void)plane;
     bool ret = false;
 
     unsigned int i1 = Vl_getIndex(vl, p1.Ptr() );
@@ -879,9 +882,6 @@ public:
       Vl_releaseVertexLookup(splitFront);
       Vl_releaseVertexLookup(splitBack);
 
-  		unsigned int fsize = ifront.size()/3;
-  		unsigned int bsize = iback.size()/3;
-
       // ok... here we recursively call
       if ( ifront.size() )
       {
@@ -1062,4 +1062,4 @@ unsigned int performConvexDecomposition(const DecompDesc &desc)
 
 
 
-};
+}

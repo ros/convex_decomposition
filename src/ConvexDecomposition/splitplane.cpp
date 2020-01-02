@@ -208,7 +208,9 @@ bool computeSplitPlane(unsigned int vcount,
                        ConvexDecompInterface *callback,
                        double *plane)
 {
-  bool cret = false;
+  (void)tcount;
+  (void)indices;
+  (void)callback;
 
 
   double sides[3];
@@ -233,20 +235,16 @@ bool computeSplitPlane(unsigned int vcount,
   double dz = sides[2];
 
 
-	double laxis = dx;
-
 	unsigned int axis = 0;
 
 	if ( dy > dx )
 	{
 		axis = 1;
-		laxis = dy;
 	}
 
 	if ( dz > dx && dz > dy )
 	{
 		axis = 2;
-		laxis = dz;
 	}
 
   double p1[3];
@@ -336,4 +334,4 @@ bool computeSplitPlane(unsigned int vcount,
 }
 
 
-};
+}
