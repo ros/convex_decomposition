@@ -65,6 +65,6 @@ float  computeBoundingSphere(unsigned int vcount,const float *points,float *cent
 
 double computeSphereVolume(double r);
 
-};
+}
 
 #endif

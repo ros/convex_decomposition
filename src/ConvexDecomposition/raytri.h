@@ -64,6 +64,6 @@ namespace ConvexDecomposition
 bool lineIntersectsTriangle(const double *rayStart,const double *rayEnd,const double *p1,const double *p2,const double *p3,double *sect);
 bool rayIntersectsTriangle(const double *p,const double *d,const double *v0,const double *v1,const double *v2,double &t);
 
-};
+}
 
 #endif

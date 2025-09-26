@@ -4,7 +4,10 @@
 #include <assert.h>
 #include <ctype.h>
 
-#pragma warning(disable:4996)
+#ifdef _WIN32
+# pragma warning(push)
+# pragma warning(disable:4996)
+#endif
 
 #include "cd_wavefront.h"
 
@@ -152,23 +155,23 @@ public:
 
 	const char ** GetArglist(char *source,int &count); // convert source string into an arg list, this is a destructive parse.
 
-	void SetHardSeparator(char c) // add a hard separator
+	void SetHardSeparator(unsigned char c) // add a hard separator
 	{
 		mHard[c] = ST_HARD;
 	}
 
-	void SetHard(char c) // add a hard separator
+	void SetHard(unsigned char c) // add a hard separator
 	{
 		mHard[c] = ST_HARD;
 	}
 
 
-	void SetCommentSymbol(char c) // comment character, treated as 'end of string'
+	void SetCommentSymbol(unsigned char c) // comment character, treated as 'end of string'
 	{
 		mHard[c] = ST_EOS;
 	}
 
-	void ClearHardSeparator(char c)
+	void ClearHardSeparator(unsigned char c)
 	{
 		mHard[c] = ST_DATA;
 	}
@@ -176,7 +179,7 @@ public:
 
 	void DefaultSymbols(void); // set up default symbols for hard seperator and comment symbol of the '#' character.
 
-	bool EOS(char c)
+	bool EOS(unsigned char c)
 	{
 		if ( mHard[c] == ST_EOS )
 		{
@@ -194,9 +197,9 @@ private:
 
 
 	inline char * AddHard(int &argc,const char **argv,char *foo);
-	inline bool   IsHard(char c);
+	inline bool   IsHard(unsigned char c);
 	inline char * SkipSpaces(char *foo);
-	inline bool   IsWhiteSpace(char c);
+	inline bool   IsWhiteSpace(unsigned char c);
 	inline bool   IsNonSeparator(char c); // non seperator,neither hard nor soft
 
 	bool   mMyAlloc; // whether or not *I* allocated the buffer and am responsible for deleting it.
@@ -256,7 +259,7 @@ InPlaceParser::~InPlaceParser(void)
 
 #define MAXARGS 512
 
-bool InPlaceParser::IsHard(char c)
+bool InPlaceParser::IsHard(unsigned char c)
 {
 	return mHard[c] == ST_HARD;
 }
@@ -275,7 +278,7 @@ char * InPlaceParser::AddHard(int &argc,const char **argv,char *foo)
 	return foo;
 }
 
-bool   InPlaceParser::IsWhiteSpace(char c)
+bool   InPlaceParser::IsWhiteSpace(unsigned char c)
 {
 	return mHard[c] == ST_SOFT;
 }
@@ -549,6 +552,9 @@ public:
 
 	virtual void NodeTriangle(const GeometryVertex *v1,const GeometryVertex *v2,const GeometryVertex *v3)
 	{
+          (void)v1;
+          (void)v2;
+          (void)v3;
 	}
 
 };
@@ -596,13 +602,6 @@ int OBJ::LoadMesh(const char *fname,GeometryInterface *iface)
   ipp.Parse(this);
 
 
-  return ret;
-}
-
-static const char * GetArg(const char **argv,int i,int argc)
-{
-  const char * ret = 0;
-  if ( i < argc ) ret = argv[i];
   return ret;
 }
 
@@ -666,6 +665,7 @@ void OBJ::GetVertex(GeometryVertex &v,const char *face) const
 
 int OBJ::ParseLine(int lineno,int argc,const char **argv)  // return TRUE to continue parsing, return FALSE to abort parsing process
 {
+  (void)lineno;
   int ret = 0;
 
   if ( argc >= 1 )
@@ -855,4 +855,8 @@ unsigned int WavefrontObj::loadObj(const char *fname) // load a wavefront obj re
 	return ret;
 }
 
-};
+}
+
+#ifdef _WIN32
+# pragma warning(pop)
+#endif

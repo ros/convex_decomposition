@@ -76,7 +76,7 @@ PlaneTriResult planeTriIntersection(const double *plane,    // the plane equatio
                                     double       *back,      // the triangle in back of the plane
                                     unsigned int &bcount);  // the number of vertices in the 'back' triangle.
 
-};
+}
 
 
 #endif

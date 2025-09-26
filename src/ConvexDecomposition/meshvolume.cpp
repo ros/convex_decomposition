@@ -68,7 +68,6 @@ double computeMeshVolume(const double *vertices,unsigned int tcount,const unsign
 {
 	double volume = 0;
 
-	const double *p0 = vertices;
 	for (unsigned int i=0; i<tcount; i++,indices+=3)
 	{
 
@@ -130,6 +129,7 @@ inline double tetVolume(const double *p0,const double *p1,const double *p2,const
 
 inline double det(const double *p0,const double *p1,const double *p2,const double *p3)
 {
+  (void)p0;
   return  p1[0]*p2[1]*p3[2] + p2[0]*p3[1]*p1[2] + p3[0]*p1[1]*p2[2] -p1[0]*p3[1]*p2[2] - p2[0]*p1[1]*p3[2] - p3[0]*p2[1]*p1[2];
 }
 
@@ -163,7 +163,6 @@ float computeMeshVolume(const float *vertices,unsigned int tcount,const unsigned
 {
 	float volume = 0;
 
-	const float *p0 = vertices;
 	for (unsigned int i=0; i<tcount; i++,indices+=3)
 	{
 
@@ -225,6 +224,7 @@ inline float tetVolume(const float *p0,const float *p1,const float *p2,const flo
 
 inline float det(const float *p0,const float *p1,const float *p2,const float *p3)
 {
+  (void)p0;
   return  p1[0]*p2[1]*p3[2] + p2[0]*p3[1]*p1[2] + p3[0]*p1[1]*p2[2] -p1[0]*p3[1]*p2[2] - p2[0]*p1[1]*p3[2] - p3[0]*p2[1]*p1[2];
 }
 
@@ -247,5 +247,4 @@ float computeMeshVolume2(const float *vertices,unsigned int tcount,const unsigne
 }
 
 
-};
-
+}

@@ -284,7 +284,6 @@ void computeBestFitOBB(unsigned int vcount,const float *points,unsigned int pstr
 {
   double *temp = new double[vcount*3];
   const char *src = (const char *)points;
-  double *dest     = temp;
   for (unsigned int i=0; i<vcount; i++)
   {
     const float *s = (const float *) src;
@@ -365,4 +364,4 @@ void computeBestFitABB(unsigned int vcount,const float *points,unsigned int pstr
 
 }
 
-};
+}

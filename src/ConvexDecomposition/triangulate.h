@@ -80,6 +80,6 @@ unsigned int triangulate2d(unsigned int pcount,     // number of points in the p
                            double *triangles,        // destination buffer for output triangles.
                            unsigned int maxTri);    // maximum number of triangles we can store.
 
-};
+}
 
 #endif

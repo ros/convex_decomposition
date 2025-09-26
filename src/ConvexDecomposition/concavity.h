@@ -75,7 +75,7 @@ double computeConcavity(unsigned int vcount,
                        double &volume);
 
 
-};
+}
 
 
 #endif

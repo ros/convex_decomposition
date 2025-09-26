@@ -107,6 +107,6 @@ void  fm_computeNormalVector(double *n,const double *p1,const double *p2); // as
 bool  fm_computeWindingOrder(const double *p1,const double *p2,const double *p3); // returns true if the triangle is clockwise.
 void  fm_normalize(double *n); // normalize this vector
 
-}; // end of nsamepace
+} // end of nsamepace
 
 #endif

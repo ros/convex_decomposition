@@ -66,7 +66,10 @@
 //
 
 
-#pragma warning(disable:4786)
+#ifdef _WIN32
+# pragma warning(push)
+# pragma warning(disable:4786)
+#endif
 
 #include <math.h>
 #include <float.h>
@@ -1198,12 +1201,16 @@ typedef std::vector< Vector2d<double> > Vector2dVector;
 
 template <class Type> Vector3d<Type> operator * (Type s, const Vector3d<Type> &v )
 			{ Vector3d <Type> Scaled(v.x*s, v.y*s, v.z*s);
-				return(Scaled); };
+				return(Scaled); }
 
 template <class Type> Vector2d<Type> operator * (Type s, const Vector2d<Type> &v )
 			{ Vector2d <Type> Scaled(v.x*s, v.y*s);
-				return(Scaled); };
+				return(Scaled); }
 
-};
+}
+
+#ifdef _WIN32
+# pragma warning(pop)
+#endif
 
 #endif

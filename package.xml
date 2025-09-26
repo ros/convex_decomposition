@@ -1,6 +1,6 @@
-<package>
+<package format="2">
   <name>convex_decomposition</name>
-  <version>0.1.12</version>
+  <version>1.0.0</version>
   <description>Convex Decomposition Tool for Robot Model</description>
   <author email="jratcliff@infiniplex.net">John W. Ratcliff</author>
 
@@ -11,9 +11,12 @@
   <url type="bugtracker">http://kforge.ros.org/robotmodel/Trac</url>
   <url type="repository">http://kforge.ros.org/robotmodel/convex_decomposition</url>
 
-  <buildtool_depend>catkin</buildtool_depend>
+  <buildtool_depend>ament_cmake</buildtool_depend>
 
   <build_depend>unzip</build_depend>
 
-  <run_depend>unzip</run_depend>
+  <exec_depend>unzip</exec_depend>
+  <export>
+      <build_type>ament_cmake</build_type>
+  </export>
 </package>
